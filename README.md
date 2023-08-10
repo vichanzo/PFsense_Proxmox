@@ -44,4 +44,10 @@ run the following command:
 ```
 cd PFsense_Proxmox && ansible-playbook local.yml
 ```
+What does the local.yml file do?
+- Install tools to allow Ansible to manage Proxmox
+- Create a VM for PFsense
+- Run the VM for PFsense
+
+## Step 4 - Load the configuration file that you backed up into your virtualized PFSense
 
