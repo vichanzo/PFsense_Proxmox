@@ -1,0 +1,13 @@
+---
+- name: Local Apt Ansible
+  hosts: localhost
+  connection: local
+  become: true
+  tasks:
+   - name: apt install python3-pip
+     apt:
+      name: python3-pip
+   - name: pip install proxmoxer
+     pip:
+      name: proxmoxer
+      state: latest
