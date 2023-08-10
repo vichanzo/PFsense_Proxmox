@@ -1,5 +1,6 @@
 # Install the base programs needed to run ansible
-apt install git openssh-server sudo ansible
+apt install git openssh-server sudo ansible python3-pip
+ansible-galaxy collection install community.general
 
 # Clone this repository to your computer
 git clone https://github.com/vichanzo/PFsense_Proxmox.git
