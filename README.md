@@ -36,6 +36,7 @@ git clone https://github.com/vichanzo/PFsense_Proxmox.git
 wget https://atxfiles.netgate.com/mirror/downloads/pfSense-CE-2.7.0-RELEASE-amd64.iso.gz
 
 # Extract the ISO
+```
 gunzip -c pfSense-CE-2.7.0-RELEASE-amd64.iso.gz > /var/lib/vz/template/iso/pfsense.iso
 ``` 
 
@@ -54,6 +55,15 @@ What does the local.yml file do?
 - Install tools to allow Ansible to manage Proxmox
 - Create a VM for PFsense
 - Run the VM for PFsense
+
+run the following commands:
+```
+sudo whoami
+ansible-playbook local.yml
+ansible-playbook proxmox_vm.yml
+```
+
+
 
 ## Step 4 - Load the configuration file that you backed up into your virtualized PFSense
 
