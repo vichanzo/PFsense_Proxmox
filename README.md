@@ -4,12 +4,13 @@ I am using Ansible as the tool to maintain and deploy most packages.
 
 Basic Process:
 1) Install Proxmox using the ISO if you don't know how search the web for how to "install Proxmox using USB"
-2) Run the provided shell scriptDown
+2) Run the provided shell script
     + This shell script will install the basic pre-requisites using APT
     + Clone the files from this repository
     + Download the PFsense ISO using wget to the appropriate folder /var/lib/images
 3) Run the Ansible Playbook to complete the rest of the installation and configuration
-    + ksd 
+    + substep 1
+    + substep 2 
 
 What you need:
 - Server with at least 2 network ports (one for WAN/external network and one for LAN/internal network)
@@ -31,4 +32,16 @@ apt install git openssh-server sudo ansible
 # Clone this repository to your computer
 git clone https://github.com/vichanzo/PFsense_Proxmox.git
 
+# Download the PFsense ISO
+wget https://atxfiles.netgate.com/mirror/downloads/pfSense-CE-2.7.0-RELEASE-amd64.iso.gz?_gl=1*3rkkdf*_ga*NDk4MDQ4NzE4LjE2OTE2NDQ0ODE.*_ga_TM99KBGXCB*MTY5MTY0NDQ4MS4xLjAuMTY5MTY0NDQ4MS42MC4wLjA.
+
+# Extract the ISO
+gunzip -c pfSense-CE-2.7.0-RELEASE-amd64.iso.gz > /var/lib/images/ISO/pfsense.iso
+``` 
+
+## Step 3 - Run the Ansible Playbook locally
+run the following command:
 ```
+cd PFsense_Proxmox && ansible-playbook local.yml
+```
+
