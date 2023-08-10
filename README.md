@@ -18,13 +18,13 @@ What you need:
 - Some basic knowledge of Linux
 
 ## Step 1 - Install Proxmox on your server
-Download the Proxmox iso from [https://enterprise.proxmox.com/iso/proxmox-ve_8.0-2.iso]
-Create a bootable USB following your favorite method or use this [guide] (https://pve.proxmox.com/wiki/Prepare_Installation_Media).
+1) Download the Proxmox iso from https://enterprise.proxmox.com/iso/proxmox-ve_8.0-2.iso
+2) Create a bootable USB following your favorite method or use this guide: https://pve.proxmox.com/wiki/Prepare_Installation_Media.
 
 ## Step 2 - Create and run the shell script.
-- Log into your proxmox as root (and password you provided)
-- nano preinstall.sh
-- Copy the below text into the editor window (press CNTL-X when done and ENTER to save the file)
+1) Log into your proxmox as root (and password you provided)
+2) nano preinstall.sh
+3) Copy the below text into the editor window (press CNTL-X when done and ENTER to save the file)
 ```
 # Install the base programs needed to run ansible
 apt install git openssh-server sudo ansible
@@ -36,8 +36,12 @@ git clone https://github.com/vichanzo/PFsense_Proxmox.git
 wget https://atxfiles.netgate.com/mirror/downloads/pfSense-CE-2.7.0-RELEASE-amd64.iso.gz?_gl=1*3rkkdf*_ga*NDk4MDQ4NzE4LjE2OTE2NDQ0ODE.*_ga_TM99KBGXCB*MTY5MTY0NDQ4MS4xLjAuMTY5MTY0NDQ4MS42MC4wLjA.
 
 # Extract the ISO
-gunzip -c pfSense-CE-2.7.0-RELEASE-amd64.iso.gz > /var/lib/images/ISO/pfsense.iso
+gunzip -c pfSense-CE-2.7.0-RELEASE-amd64.iso.gz > /var/lib/vz/template/iso/pfsense.iso
 ``` 
+4) run the shell script
+```
+bash ./preinstall.sh
+```
 
 ## Step 3 - Run the Ansible Playbook locally
 run the following command:
