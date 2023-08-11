@@ -1,0 +1,22 @@
+---
+- name: Create a KVM VM for pfSense
+  hosts: localhost
+  connection: local
+  become: true
+  tasks:
+  - name: test_proxmoxer
+    proxmox_kvm:
+      api_user: root@pam
+      api_password: Passw0rd
+      api_host: 192.168.88.100
+      name: pfSense
+      node: pve
+      vmid: 100
+      memory: 4096
+      net:
+        net0: 'e1000,bridge=vmbr1'
+        net1: 'e1000,bridge=vmbr2'
+      sata:
+        sata0: 'local-lvm:10,format=raw'
+      ide: '{"ide0":"local:iso/pfsense.iso,media=cdrom"}'
+
