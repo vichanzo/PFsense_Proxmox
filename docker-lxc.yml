@@ -1,0 +1,30 @@
+---
+- name: Install docker host as an LXC container in Proxmox
+  hosts: localhost
+  connection: local
+  become: true
+  tasks:
+  - name: Update pveam
+    shell: sudo pveam update
+
+  - name: download template
+    shell: sudo pveam download local debian-12-standard_12.0-1_amd64.tar.zst
+
+  - name: create debian LXC
+    proxmox:
+      api_user: root@pam
+      api_password: passw0rd
+      api_host: 192.168.1.10
+      node: pve
+      hostname: docker-lxc
+      password: 'passw0rd'
+      vmid: 503
+      cores: '1'
+      cpus: '1'
+      ostemplate:  'local:vztmpl/debian-12-standard_12.0-1_amd64.tar.zst'
+      storage: 'local-lvm'
+      disk: '16'
+      memory: '512'
+      netif: '{"net0":"name=eth0,ip=dhcp,bridge=vmbr0"}'
+      nameserver: '192.168.88.1'
+      state: 'present'
